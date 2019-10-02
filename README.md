@@ -1,5 +1,5 @@
-service:
-
+### service:
+```
 #/etc/systemd/system/fix-mouse-lag.service
 
 [Unit]
@@ -14,11 +14,11 @@ ExecStart=/usr/local/bin/fix-mouse-lag.sh
 
 [Install]
 WantedBy=bluetooth.service
+```
 
 
-
-script:
-
+### script:
+```
 #!/bin/sh
 
 #/usr/local/bin/fix-mouse-lag.sh
@@ -28,8 +28,11 @@ echo 0 > /sys/kernel/debug/bluetooth/hci0/conn_latency
 echo 6 > /sys/kernel/debug/bluetooth/hci0/conn_min_interval
 echo 7 > /sys/kernel/debug/bluetooth/hci0/conn_max_interval
 
+```
+### Run
 
-
+```
 sudo chown root:root /etc/systemd/system/fix-mouse-lag.service
 sudo chmod a+rx /usr/local/bin/fix-mouse-lag.sh
 sudo systemctl enable fix-mouse-lag.service --now
+```
